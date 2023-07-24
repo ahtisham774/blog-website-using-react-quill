@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    --primary-color: #222831;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+.ql-toolbar {
+    border-radius: 1rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 0.5rem;
+}
+
+.ql-toolbar.ql-snow {
+    border: 0 !important;
+}
+.ql-container {
+    min-height: 20rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    background: #fff;
+}
+.ql-editor{
+    min-height: 20rem;
+    max-height: 35rem;
+    overflow-y: auto;
+}
+
+.ql-editor[data-placeholder]:before {
+    color: #979797;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+
+}
+::-webkit-scrollbar{
+    width: .5rem;
+    height: 2px;
+}
+::-webkit-scrollbar-thumb{
+    background: #222831;
+    border-radius: 1rem;
+}
+::-webkit-scrollbar-track{
+    background: #fff;
+    border-radius: 1rem;
+}
