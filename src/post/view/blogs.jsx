@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import BlogHeader from "../../components/blog_header"
 import BlogItem from "../../components/blog_item"
 import { useNavigate } from "react-router-dom"
 
@@ -30,14 +29,13 @@ const Blogs = () => {
 
 
     return (
-        <div className=" relative flex flex-col w-full items-center justify-center">
-            <BlogHeader />
+        <div className=" relative flex flex-col w-full items-center mt-20 md:mt-28  justify-center">
 
             {
                 blogs ?
-                    <div className="flex flex-col justify-center items-center my-4 w-full">
-                        <h1 className="text-xl font-bold my-4">All Blogs</h1>
-                        <div className="flex flex-col justify-center items-center my-4 w-7/12 p-4 shadow-md" >
+                    <div className="flex flex-col justify-center items-center w-full">
+                        <h1 className="text-2xl font-sans font-bold my-4">All Blogs</h1>
+                        <div className="flex flex-col justify-center items-center my-4 w-11/12 lg:w-7/12 p-4 shadow-md" >
                             {blogs.map((blog) => {
                                 return <BlogItem blog={blog} key={blog.id} handleClick={handleClick} />
                             })}

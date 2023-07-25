@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css'
 import PropTypes from 'prop-types'
 import { useRef } from "react"
 
-const Editor = ({ value, setValue }) => {
+const Editor = ({ value, setValue,readOnly }) => {
 
     const editorRef = useRef(null)
     const modules = {
@@ -32,6 +32,7 @@ const Editor = ({ value, setValue }) => {
     ]
 
     const handleChange = () => {
+        console.log(editorRef.current)
         if (editorRef.current) {
             const editor = editorRef.current.getEditor()
             const html = editor.root.innerHTML
@@ -48,19 +49,20 @@ const Editor = ({ value, setValue }) => {
             onChange={handleChange}
             modules={modules}
             formats={formats}
-            className="w-full h-fit bg-slate-500/30 rounded-lg "
+            className="w-full flex flex-col items-center h-fit bg-slate-500/30 rounded-lg "
             placeholder="Write something awesome..."
+            readOnly={readOnly}
 
 
-        >
-        </ReactQuill>
+        />
 
     )
 }
 
 Editor.propTypes = {
     value: PropTypes.string,
-    setValue: PropTypes.func
+    setValue: PropTypes.func,
+    readOnly: PropTypes.bool
 }
 
 export default Editor

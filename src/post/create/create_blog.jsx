@@ -1,9 +1,8 @@
 
 import { useEffect, useState } from 'react'
-import logo from '../../assets/logo-scondary.svg'
 import Editor from '../../components/editor'
 import Title from './title'
-import { NavLink, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import Alert from '../../utils/alert'
 
 const Create = () => {
@@ -48,33 +47,21 @@ const Create = () => {
         },1500)
     }
     return (
-        <div className='flex flex-col justify-center items-center gap-3 pb-5 '>
-            <div className='w-60'>
-                <img src={logo} className='w-ful h-auto object-cover ' alt="" />
-            </div>
-            <h1 className='text-xl font-bold text-[var(--primary-color)] my-2'>
+        <div className='flex flex-col justify-center items-center gap-3 mt-28 pb-5 '>
+            <h1 className='text-2xl font-sans  font-bold text-[var(--primary-color)] my-2'>
                 Create Blog
             </h1>
             {
                 isPublish && <Alert/>
             }
             <div className='w-full flex items-center justify-center '>
-                <div className='w-full md:w-1/2 flex flex-col gap-4 shadow-2xl p-3  rounded-lg '>
+                <div className='w-full lg:w-1/2 flex flex-col gap-4 shadow-2xl p-3  rounded-lg '>
                     <Title title={title} setTitle={setTitle} />
-                    <Editor value={editorValue} setValue={setEditorValue} />
+                    <Editor value={editorValue} setValue={setEditorValue} readOnly={false} />
                     <button className='flex items-center gap-2 w-fit p-1 self-end px-5 rounded-full border-2  font-bold text-lg bg-[var(--primary-color)] text-white transition-colors duration-300 disabled:bg-white disabled:text-slate-400 disabled:cursor-not-allowed' disabled={isBtnDisabled} onClick={handleClick}>
                         Publish
                     </button>
                 </div>
-            </div>
-
-            {/* floating icon home */}
-            <div className='fixed bottom-5 right-5 z-50'>
-                <NavLink to='/'>
-                    <div className='w-12 h-12 flex items-center justify-center rounded-full bg-[var(--primary-color)] shadow-2xl hover:bg-[var(--primary-color)]/50 transition-colors duration-300'>
-                    <svg viewBox="0 0 1024 1024" width={34} xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M512 128 128 447.936V896h255.936V640H640v256h255.936V447.936z"/></svg>
-                    </div>
-                </NavLink>
             </div>
         </div>
     )

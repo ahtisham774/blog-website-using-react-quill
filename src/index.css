@@ -18,9 +18,8 @@
 
 .ql-toolbar {
     border-radius: 1rem !important;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+    display: block;
+    box-sizing: border-box;
     padding: 0.5rem;
 }
 
@@ -29,6 +28,7 @@
 }
 .ql-container {
     min-height: 20rem;
+    width: 100%;
     font-size: 1.125rem;
     line-height: 1.75rem;
     border-bottom-right-radius: 0.375rem;
@@ -37,6 +37,7 @@
 }
 .ql-editor{
     min-height: 20rem;
+    width: 100%;
     max-height: 35rem;
     overflow-y: auto;
 }
@@ -46,8 +47,14 @@
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 400;
+    width: 100%;
 
 }
+/* change cursor to default when .ql-editor id readOnly and all its child except a tag */
+.ql-editor[contenteditable="false"] , .ql-editor *:has(:not(a)) {
+    cursor:default;
+}
+
 ::-webkit-scrollbar{
     width: .5rem;
     height: 2px;
@@ -60,3 +67,4 @@
     background: #fff;
     border-radius: 1rem;
 }
+
