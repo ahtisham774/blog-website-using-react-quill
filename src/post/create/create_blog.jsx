@@ -42,6 +42,11 @@ const Create = () => {
                         navigate('/')
                     }, 1500)
                 }
+                else{
+                    alert(
+                        'Something went wrong'
+                    )
+                }
             }
         ).catch(
             err => {
