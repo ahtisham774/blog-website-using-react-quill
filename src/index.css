@@ -38,7 +38,7 @@
 .ql-editor{
     min-height: 20rem;
     width: 100%;
-    max-height: 35rem;
+    max-height: 30rem;
     overflow-y: auto;
 }
 

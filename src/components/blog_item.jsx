@@ -1,5 +1,6 @@
 
 import { PropTypes } from 'prop-types';
+import {FormatDate} from './format_Date';
 
 const BlogItem = ({ blog, handleClick }) => {
     return (
@@ -12,11 +13,10 @@ const BlogItem = ({ blog, handleClick }) => {
 
                 <div >
                     <h1 className='text-md md:text-xl font-medium'>{blog.title}</h1>
-                    <p className='text-xs md:text-sm text-slate-600'>Published {"."} {new Date(blog.published_at).toLocaleString('default', {
-                        day: '2-digit'
-                        , month: 'short',
-                        year: 'numeric'
-                    })}</p>
+                   
+                    <p className='text-xs md:text-sm text-slate-600'>Published {"."} {
+                        FormatDate(blog.published_at)
+                   }</p>
                 </div>
             </div>
 

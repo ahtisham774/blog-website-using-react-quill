@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css'
 import PropTypes from 'prop-types'
 import { useRef } from "react"
 
-const Editor = ({ value, setValue,readOnly }) => {
+const Editor = ({ value, setValue,toolbar = true,readOnly }) => {
 
     const editorRef = useRef(null)
     const modules = {
@@ -13,7 +13,7 @@ const Editor = ({ value, setValue,readOnly }) => {
             [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }, 
-            {'align': [false,'center','right','justify', ]},],
+            {'align': []},],
             [{ 'font': [] }, ],
             [{ 'script': 'sub' },{'script':'super' }],
             [{ 'color': [] }, { 'background': [] }],
@@ -32,7 +32,6 @@ const Editor = ({ value, setValue,readOnly }) => {
     ]
 
     const handleChange = () => {
-        console.log(editorRef.current)
         if (editorRef.current) {
             const editor = editorRef.current.getEditor()
             const html = editor.root.innerHTML
@@ -47,9 +46,9 @@ const Editor = ({ value, setValue,readOnly }) => {
             theme="snow"
             value={value}
             onChange={handleChange}
-            modules={modules}
+            modules={toolbar ? modules : {toolbar:false}}
             formats={formats}
-            className="w-full flex flex-col items-center h-fit bg-slate-500/30 rounded-lg "
+            className="w-full flex flex-col items-center h-fit bg-slate-500/30"
             placeholder="Write something awesome..."
             readOnly={readOnly}
 
@@ -62,7 +61,8 @@ const Editor = ({ value, setValue,readOnly }) => {
 Editor.propTypes = {
     value: PropTypes.string,
     setValue: PropTypes.func,
-    readOnly: PropTypes.bool
+    readOnly: PropTypes.bool,
+    toolbar: PropTypes.bool
 }
 
 export default Editor
