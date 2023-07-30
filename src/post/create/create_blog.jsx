@@ -1,10 +1,11 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Editor from '../../components/editor'
 import Title from './title'
 import { useNavigate } from 'react-router-dom'
 import Alert from '../../utils/alert'
 import axios from 'axios'
+import { url } from '../../utils/backend_url'
 
 const Create = () => {
 
@@ -30,7 +31,7 @@ const Create = () => {
         formData.append('published_at', new Date().toLocaleDateString())
         formData.append('coverImage', coverImage)
         
-        axios.post('http://localhost:4000/blog/new',formData, { headers: {'Content-Type': 'multipart/form-data'}}).then(
+        axios.post(url+'blog/new',formData, { headers: {'Content-Type': 'multipart/form-data'}}).then(
             res => {
                 if(res.status === 200){
                     setEditorValue('')

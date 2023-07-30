@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Editor from "./editor"
 import {FormatDate} from "./format_Date"
 import axios from 'axios'
+import { url } from "../utils/backend_url"
 
 const Blog = () => {
 
@@ -16,7 +17,7 @@ const Blog = () => {
 
     useEffect(() => {
         const getBlog = (paramId) =>{
-            axios.get(`http://localhost:4000/blog/${paramId}`).then(
+            axios.get(url+`blog/${paramId}`).then(
                 res=>{
                     return res.data.data
                 }
@@ -24,7 +25,7 @@ const Blog = () => {
             .then(
                 data=>{
                     setBlog(data)
-                    setImg('http://localhost:4000/images/'+data.coverImage)
+                    setImg(url+'images/'+data.coverImage)
                 }
             )
             .catch(

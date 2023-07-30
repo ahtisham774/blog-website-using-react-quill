@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import BlogItem from "../../components/blog_item"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { url } from "../../utils/backend_url"
 
 
 const Blogs = () => {
@@ -11,7 +12,7 @@ const Blogs = () => {
 
     useEffect(() => {
         const getAll = () => {
-            axios.get('http://localhost:4000/blog/all').then(
+            axios.get(url+'/blog/all').then(
                 res => { return res.data.data }
             )
                 .then(
