@@ -70,7 +70,7 @@ const Blog = () => {
                         <section className="relative flex items-center justify-center self-center content-center ">
                            
                            {/* <div className={`bg-[url('${img}')]`+' relative bg-no-repeat bg-cover bg-center w-full h-[300px] overflow-hidden '}></div> */}
-                           <img src={img} className="rounded-lg  h-[300px] w-full max-w-full  object-cover" alt="Cover Photo" />
+                           <img src={img} rel="preload"  className="rounded-lg  h-[300px] w-full max-w-full  object-cover" alt="Cover Photo" />
                         </section>
                         
                         <div className="container my-5">
