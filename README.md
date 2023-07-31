@@ -20,7 +20,7 @@ InkChronicles is a React-based web application that allows users to write and sa
 
 ![image](https://github.com/ahtisham774/blog-website-using-react-quill/assets/77314350/c614598e-28da-4268-87c2-10199f90a984)
 ![image](https://github.com/ahtisham774/blog-website-using-react-quill/assets/77314350/22737669-cb76-4d23-828b-a6a44a737249)
-
+![image](https://github.com/ahtisham774/blog-website-using-react-quill/assets/77314350/c3389a99-c78d-45d9-a45e-820755d58be7)
 
 ## Installation
 
