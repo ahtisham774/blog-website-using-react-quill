@@ -12,6 +12,7 @@ const Create = () => {
 
 
     const [editorValue, setEditorValue] = useState('')
+    const [loading,setLoading] = useState(false)
     const [coverImage, setCoverImage] = useState(null)
     const [title, setTitle] = useState('')
     const [isPublish, setIsPublish] = useState(false)
@@ -22,6 +23,7 @@ const Create = () => {
 
 
     const post =  () => {
+       
         const formData = new FormData()
         
 
@@ -30,19 +32,20 @@ const Create = () => {
         formData.append('content', editorValue)
         formData.append('published_at', new Date().toLocaleDateString())
         formData.append('coverImage', coverImage)
-        
         axios.post(url+'blog/new',formData, { headers: {'Content-Type': 'multipart/form-data'}}).then(
             res => {
                 if(res.status === 200){
                     setEditorValue('')
                     setTitle('')
                     setIsPublish(true)
+                    setLoading(false)
                     setTimeout(() => {
                         setIsPublish(false)
                         navigate('/')
                     }, 1500)
                 }
                 else{
+                    setLoading(false)
                     alert(
                         'Something went wrong'
                     )
@@ -51,6 +54,7 @@ const Create = () => {
         ).catch(
             err => {
                 console.log(err)
+                setLoading(false)
             }
         )
     }
@@ -66,6 +70,7 @@ const Create = () => {
     const handleSubmit = (e) => {
         
         e.preventDefault()
+        setLoading(true)
         post()
        
     }
@@ -98,8 +103,37 @@ const Create = () => {
                                 className="block w-full text-sm file:mr-4 file:rounded-md file:cursor-pointer cursor-pointer file:border-0 file:bg-[var(--primary-color)] file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-primary-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
                             />
                         </div>
-                        <button type='submit' className='flex items-center gap-2 w-fit p-1 self-end px-5 rounded-full border-2  font-bold text-lg bg-[var(--primary-color)] text-white transition-colors duration-300 disabled:bg-white disabled:text-slate-400 disabled:cursor-not-allowed' disabled={isBtnDisabled} >
-                            Publish
+                        <button type='submit' className='flex items-center text-center justify-center w-fit p-1 self-end px-5 rounded-full border-2  font-bold text-lg bg-[var(--primary-color)] text-white transition-colors duration-300 disabled:bg-white disabled:text-slate-400 disabled:cursor-not-allowed' disabled={loading || isBtnDisabled} >
+                            {
+                                loading ? <div className='flex items-center'>
+                                    <small className="mr-1">Loading</small>
+                                    
+                                    <svg className="animate-bounce duration-100 mr-1 h-2 w-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="#000"
+                                        viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z">
+                                        </path>
+                                    </svg>
+                                    <svg className="animate-bounce duration-150 mr-1 h-2 w-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="#000"
+                                        viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z">
+                                        </path>
+                                    </svg>
+                                    <svg className="animate-bounce duration-200 mr-1 h-2 w-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="#000"
+                                        viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z">
+                                        </path>
+                                    </svg>
+                                </div> : 'Publish'
+                            }
                         </button>
                     </form>
             </div>
